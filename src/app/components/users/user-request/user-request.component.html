@@ -1,0 +1,68 @@
+<div class="container-fluid">
+	<div class="row justify-content-center align-items-center">
+		<div class="col col-sm-12 col-md-9 col-lg-8 col-xl-7 marginForm mt-3">				
+			<div class="linkContent">
+				<div class="backLink">
+					<a [routerLink]="['/login']">Regresar</a>
+				</div>
+			</div>
+			<div class="formContainer">
+				<h3 class="centerTitle">{{ page_title }}</h3>
+				<div class="alert alert-success wd-100 mt-3 alertTextCenter" *ngIf="status == 'success' && successMessage">
+					{{ successMessage }}
+				</div>
+				<div class="alert alert-danger wd-100 mt-3 alertTextCenter" *ngIf="errorCode && status=='error'">
+					{{ errorMessage }}
+				</div>
+				<form class="ml-0 pd-0 mt-3" #requestForm="ngForm" (ngSubmit)="onSubmit(requestForm)">
+					<div class="form-group">
+						<label for="userName" class="labelForm">Nombre*</label>
+						<input type="text" name="userName" class="form-control inputForm" [ngClass]="{'is-invalid': userName.invalid && userName.touched}" #userName="ngModel" [(ngModel)]="emailParams.name" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+">
+						<small class="invalid-feedback d-block" *ngIf="userName.invalid && userName.touched">
+							Debe ingresar un nombre válido
+						</small>
+					</div>
+					<div class="form-group">
+						<label for="userSurname" class="labelForm">Apellidos*</label>
+						<input type="userSurname" name="userSurname" class="form-control inputForm" [ngClass]="{'is-invalid': userSurname.invalid && userSurname.touched}" #userSurname="ngModel" [(ngModel)]="emailParams.surname" required pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+">
+						<small class="invalid-feedback d-block" *ngIf="userSurname.invalid && userSurname.touched">
+							Debe ingresar sus apellidos
+						</small>
+					</div>
+					<div class="form-group">
+						<label for="userId" class="labelForm">Cedula*</label>
+						<input type="userId" name="userId" minlength="5" class="form-control inputForm" [ngClass]="{'is-invalid': userId.invalid && userId.touched}" #userId="ngModel" [(ngModel)]="emailParams.id" required pattern="[0-9]+">
+						<small class="invalid-feedback d-block" *ngIf="userId.invalid && userId.touched">
+							Debe ingresar un número de cédula válido
+						</small>
+					</div>
+					<div class="form-group">
+						<label for="userEmail" class="labelForm">Email*</label>
+						<input type="userEmail" name="userEmail" class="form-control inputForm" [ngClass]="{'is-invalid': userEmail.invalid && userEmail.touched}" #userEmail="ngModel" [(ngModel)]="emailParams.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+						<small class="invalid-feedback d-block" *ngIf="userEmail.invalid && userEmail.touched">
+							Debe ingresar un email válido
+						</small>
+					</div>
+					<div class="form-group">
+						<label for="userCompany" class="labelForm">Empresa*</label>
+						<input type="userCompany" name="userCompany" class="form-control inputForm" [ngClass]="{'is-invalid': userCompany.invalid && userCompany.touched}" #userCompany="ngModel" [(ngModel)]="emailParams.company" required>
+						<small class="invalid-feedback d-block" *ngIf="userCompany.invalid && userCompany.touched">
+							Debe ingresar una empresa válida
+						</small>
+					</div>
+				
+					<div class="buttonSubmit mt-4">
+						<input type="submit" value="Enviar Solicitud" class="btn btn-success" [disabled]="requestForm.invalid">
+					</div>										
+					<div style="margin-top: 2rem;" id="preloaderOndas" *ngIf="flag && flag==1">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>	
+				</form>
+			</div>
+		</div>
+	</div>	
+</div>

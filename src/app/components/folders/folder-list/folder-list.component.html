@@ -1,0 +1,73 @@
+<div class="container-fluid">
+	<div class="row justify-content-center align-items-center mt-3">
+		<div class="col col-sm-12 col-md-11 col-lg-10 col-xl-9 marginForm mt-3">
+			<div class="linkContent">
+				<div class="backLink">
+					<a href="javascript:window.history.back();">Regresar</a>
+				</div>
+			</div>
+			<div id="preloaderCruzando" *ngIf="!folders && !errorCode">
+			</div>
+			<h3 class="centerTitle" *ngIf="folders">{{ page_title }}</h3>
+			<div class="alert alert-danger wd-100 mt-3 alertTextCenter" *ngIf="status=='error' && errorCode">
+				{{ errorMessage }}
+			</div>
+			<div class="paginationControls" *ngIf="folders && folders.length > 20">
+				<pagination-controls (pageChange)="pageChange($event)"
+									 previousLabel="Anterior"
+									 nextLabel="Siguiente"
+									 maxSize="4">
+				</pagination-controls>
+			</div>
+			<table class="table table-bordered" *ngIf="folders">
+				<thead class="thead_styles">
+					<tr>
+						<th width="50%">Nombre</th>
+						<th width="30%">Fecha de Creación</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
+				<tbody class="tbody_styles">
+					<tr *ngFor="let folder of folders | paginate: {itemsPerPage: itemsPerPage, currentPage: actualPage}">
+						<td><a [routerLink]="['/carpetas/editar-carpeta', folder.id]">{{ folder.name }}</a></td>
+						<td><a [routerLink]="['/carpetas/editar-carpeta', folder.id]">{{ folder.created_at }}</a></td>
+						<td style="padding: 0.55rem"><button *ngIf="folderValidation(folder)" type="button" class="btn btn-danger" data-toggle="modal" [attr.data-target]="'#myModal'+folder.id">Borrar</button></td>
+						<!-- The Modal -->
+						<div class="modal" id="{{ 'myModal'+folder.id }}">
+							<div class="modal-dialog">
+								<div class="modal-content">
+
+									<!-- Modal Header -->
+							    	<div class="modal-header">
+							    		<h4 class="modal-title">Borrar la Carpeta Definitivamente</h4>
+							    		<button type="button" class="close" data-dismiss="modal">&times;</button>
+							    	</div>
+
+									<!-- Modal body -->
+									<div class="modal-body">
+										Seguro que quieres borrar la carpeta <b>{{ folder.name }}</b>?
+									</div>
+
+									<!-- Modal footer -->
+									<div class="modal-footer">
+										<a (click)="deleteFolder(folder.id)" class="btn_delete" data-dismiss="modal">Borrar</a>
+										<button type="button" class="btn_close" data-dismiss="modal">Close</button>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</tr>
+				</tbody>
+			</table>
+			<div class="paginationControls" *ngIf="folders && folders.length > 20">
+				<pagination-controls (pageChange)="pageChange($event)"
+									 previousLabel="Anterior"
+									 nextLabel="Siguiente"
+									 maxSize="4">
+				</pagination-controls>
+			</div>
+			<p style="font-size: 83%" *ngIf="folders">*Si no se muestra el botón de eliminar es porque hay documentos u otras carpetas asociadas, por lo tanto, debe eliminarlas primero.</p>	
+		</div>
+	</div>
+</div>

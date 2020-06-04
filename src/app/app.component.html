@@ -1,20 +1,100 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="headerContainer">
+	<div class="preHeader">
+		<div id="logoAlcaldia" class="inlineAlign col col-sm-12 col-lg-2 col-xl-2"><img src="./assets/img/alcaldiaLogo.png" alt="Logo Alcaldía" title="Logo Alcaldía"></div>
+		<h1 class="inlineAlign pageTitle col col-sm-12 col-lg-8 col-xl-8">Subred Integrada de Servicios de Salud Sur E.S.E.</h1>
+		<div id="logoSubred" class="inlineAlign col col-sm-12 col-lg-2 col-xl-2"><img src="./assets/img/hospitalLogo.png" alt="Logo Subred Sur" title="Logo Subred Sur"></div>
+		<div class="plansTitle">
+			<h2>Cuarto de Datos</h2>
+		</div>
+	</div>
+	<nav class="navbar navbar-expand-lg navbar-light personalNavbar">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav" *ngIf="identity" [ngClass]="{'mr-auto': identity.role == 'ROLE_USER'}">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Documentos
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="identity">
+						<a class="dropdown-item" [routerLink]="['/documentos/listar-documentos']" [routerLinkActive]="['active']">Listar Documentos</a>	
+						<a *ngIf="identity.role=='ROLE_SUPER_ADMIN' || identity.role=='ROLE_ADMIN'" class="dropdown-item" [routerLink]="['/documentos/cargar-documentos']" [routerLinkActive]="['active']">Cargar un nuevo Documento</a>			
+					</div>
+				</li>
+			</ul>
+			<ul class="navbar-nav mr-auto" *ngIf="identity && (identity.role=='ROLE_SUPER_ADMIN' || identity.role=='ROLE_ADMIN')">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Carpetas
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="identity">
+						<a class="dropdown-item" [routerLink]="['/carpetas/listar-carpetas']" [routerLinkActive]="['active']">Listar Carpetas</a>	
+						<a class="dropdown-item" [routerLink]="['/carpetas/nueva-carpeta']" [routerLinkActive]="['active']">Crear Carpeta</a>			
+					</div>
+				</li>
+			</ul>
+			<ul class="navbar-nav navbar-right menuUser">
+				<li class="nav-item" *ngIf="!identity">
+        			<a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['active']">Login<span class="sr-only">(current)</span></a>
+      			</li>
+				<li class="nav-item dropdown" *ngIf="identity && identity.name">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{ identity.name + ' ' + identity.surname }}
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a *ngIf="identity.role=='ROLE_SUPER_ADMIN'" class="dropdown-item" [routerLink]="['/listar/usuarios']" [routerLinkActive]="['active']">Listar Usuarios</a>
+						<a *ngIf="identity.role=='ROLE_SUPER_ADMIN'" class="dropdown-item" [routerLink]="['/registrar/usuario']" [routerLinkActive]="['active']">Agregar Usuarios</a>
+						<div *ngIf="identity.role=='ROLE_SUPER_ADMIN'" class="dropdown-divider"></div>
+						<a class="dropdown-item" [routerLink]="['/logout/1']">Cerrar Sesión</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
+	<div class="bodyContainer">
+		<router-outlet></router-outlet>
+	</div>
+
+	<div class="footer">
+		<div class="line1">
+			<div class="contentLine1 col col-sm-12 col-md-6 col-lg-5 col-xl-4">
+				<h6>ALCALDÍA MAYOR DE BOGOTÁ</h6>
+				<ul>
+					<li><a href="http://www.presidencia.gov.co/" target="_blank">Presidencia de la República</a></li>
+					<li><a href="https://www.mintic.gov.co/portal/604/w3-channel.html" target="_blank">MinTIC</a></li>
+					<li><a href="https://estrategia.gobiernoenlinea.gov.co/" target="_blank">Gobierno Digital</a></li>
+					<li><a href="https://bogota.gov.co/" target="_blank">Portal Bogotá</a></li>
+				</ul>
+			</div>
+			<div class="contentLine1 col col-sm-12 col-md-6 col-lg-5 col-xl-4">
+				<h6>ENTIDADES DE CONTROL</h6>
+				<ul>
+					<li><a href="https://www.contraloria.gov.co/" target="_blank">Contraloría General de la República</a></li>
+					<li><a href="https://www.procuraduria.gov.co/portal/" target="_blank">Procuraduría General de la Nación</a></li>
+					<li><a href="http://concejodebogota.gov.co/cbogota/site/edic/base/port/inicio.php" target="_blank">Concejo de Bogotá</a></li>
+					<li><a href="http://www.contraloriabogota.gov.co/" target="_blank">Contraloría de Bogotá</a></li>
+					<li><a href="http://www.personeriabogota.gov.co/" target="_blank">Personería de Bogotá</a></li>
+				</ul>
+			</div>
+			<div class="contentLine1 col col-sm-12 col-md-6 col-lg-5 col-xl-4">
+				<h6>VÍNCULOS DE INTERÉS</h6>
+				<ul>
+					<li><a href="http://oab.ambientebogota.gov.co/" target="_blank">Observatorio Ambiental de Bogotá</a></li>
+					<li><a href="https://sdqs.bogota.gov.co/sdqs/publico/registrarPeticionario/?language=es" target="_blank">Sistema Distrital de Quejas y Soluciones</a></li>
+					<li><a href="http://www.saludcapital.gov.co" target="_blank">Scretaría Distrital de Salud</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footerColor">
+			<div class="line3">
+				<div class="contentLine3">
+					<p style="margin-bottom: 0">Copyright © Sistemas Subred Integrada de Servicios de Salud Sur 2019</p>
+					<p>Soporte Técnico: cuartodedatos@subredsur.gov.co</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

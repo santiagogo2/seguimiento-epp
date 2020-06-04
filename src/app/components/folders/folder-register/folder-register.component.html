@@ -1,0 +1,44 @@
+<div class="container-fluid">
+	<div class="row justify-content-center align-items-center mt-3">
+		<div class="col col-sm-12 col-md-9 col-lg-8 col-xl-7 marginForm mt-3">				
+			<div class="linkContent">
+				<div class="backLink">
+					<a href="javascript:window.history.back();">Regresar</a>
+				</div>
+			</div>
+			<div class="col-lg-12 alert alert-danger wd-100 text-center" style="margin: auto;" *ngIf="status=='error' && errorCode">
+				{{errorMessage}}
+			</div>
+			<div class="col-lg-12 alert alert-success wd-100 text-center" style="margin: auto;" *ngIf="status=='success' && successMessage">
+				{{successMessage}} Ver <a [routerLink]="['/carpetas/listar-carpetas']">todas las carpetas creadas</a>
+			</div>
+			<div id="preloaderOndas" *ngIf="!folder && !errorCode">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<div style="padding: 1.2rem;" *ngIf="folder">
+				<h3 class="centerTitle">{{ page_title }}</h3>
+				<form class="ml-0 pd-0 mt-3" #uploadFolderForm="ngForm" (ngSubmit)="onSubmit(uploadFolderForm)">
+					<div class="form-group">
+						<label for="folderName" class="labelForm">Nombre de la Carpeta</label>
+						<input type="text" name="folderName" class="form-control inputForm" [ngClass]="{'is-invalid': folderName.invalid && folderName.touched}" #folderName="ngModel" [(ngModel)]="folder.name" required style="text-transform:uppercase">
+						<small class="invalid-feedback d-block" *ngIf="folderName.invalid && folderName.touched">Debe ingresar un nombre para la carpeta válido</small>
+					</div>
+					<div class="form-group">						
+						<label for="findType" class="labelForm">Carpeta Predecesora</label>
+						<select name="findType" class="form-control inputForm" #findType="ngModel" [(ngModel)]="folder.folder_id">
+							<option value="null">-</option>
+							<option *ngFor="let fold of preFolders" value="{{fold.id}}">{{fold.name}}</option>
+						</select>
+					</div>
+					<div class="buttonSubmit mt-4">
+						<input type="submit" value="Guardar" class="btn btn-success" [disabled]="uploadFolderForm.invalid">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

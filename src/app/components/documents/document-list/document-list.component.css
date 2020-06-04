@@ -1,0 +1,55 @@
+.table td a {
+    font-size: 0.7rem;
+    padding: 0.2rem 0;
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    text-decoration: none;
+    color: #212529;
+    color: #F7F7F7;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.tbody_styles tr td{
+	padding: 0.8rem 0 !important;
+}
+.tableStyle tbody tr{
+    cursor: pointer; 
+}
+.tableStyle tbody tr:hover{
+    background-color: #68BBC3; 
+}
+.linkContent{
+    padding: 0 1.5rem;
+    margin-bottom: -0.5rem;
+}
+.homeLink p{
+    margin-right: 3rem;
+}
+.backLink p, .homeLink p{
+    color: #007BFF;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.backLink p:hover, .homeLink p:hover{
+    color: #0056b3;
+    text-decoration: underline;
+}
+.alert-success, .alert-danger{
+    margin-top: 1.3rem !important;
+}
+.pathLinks p{
+    font-size: 0.7rem;
+}
+.pathLinks p .link{
+    color: #007BFF;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.pathLinks p .link:hover{
+    color: #0056b3;
+    text-decoration: underline;
+}
