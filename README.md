@@ -5,7 +5,7 @@ El proyecto está realizado con [Angular CLI](https://github.com/angular/angular
 ## Descripción
 El proyecto se puede usar para administrar documentos de interes dentro de carpetas que se pueden crear o eliminar según sea requerido. Se complementa con el BackEnd encontrado en el siguiente [repositorio](https://github.com/santiagogo2/api-rest-cuarto-de-datos)
 
-### Próximas Mejoras
+#### Próximas Mejoras
 1. Se deben realizar mejoras en la administración de las carpetas.
 
 ## Servidor de prueba
