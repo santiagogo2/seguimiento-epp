@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 		this.page_title = "Login";
 		this.user = new User(1,'',0,'','','','');
 		this.incomeRecord = new IncomeRecord(1,'',null);
-		this.captchaFlag = true; // Al validar el sitio se debe cambiar a false
+		this.captchaFlag = false; // Al validar el sitio se debe cambiar a false
 		this.identity = this._userService.getIdentity();
 	}
 
