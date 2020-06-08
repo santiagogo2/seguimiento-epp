@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { UserService } from '../../../services/user.service';
-import { FolderService } from '../../../services/folder.service';
+import { FolderService, UserService } from '../../../services/services.index';
 
 @Component({
 	selector: 'app-folder-edit',

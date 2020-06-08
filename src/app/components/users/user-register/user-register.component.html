@@ -3,11 +3,11 @@
 		<div class="col col-sm-12 col-md-8 col-lg-6 col-xl-5 marginForm mt-3">
 			<div class="linkContent">
 				<div class="backLink">
-					<a [routerLink]="['/listar/usuarios']">Regresar</a>
+					<a [routerLink]="['/usuarios/listar']">Regresar</a>
 				</div>
 			</div>
 			<div class="alert alert-success wd-100 mt-3" *ngIf="status == 'success' && successMessage">
-				{{ successMessage }} Ver <a [routerLink]="['/listar/usuarios']">todos los usuarios</a>
+				{{ successMessage }} Ver <a [routerLink]="['/usuarios/listar']">todos los usuarios</a>
 			</div>
 			<div class="alert alert-danger wd-100 mt-3 alertTextCenter" *ngIf="errorCode && status=='error'">
 				{{ errorMessage }}

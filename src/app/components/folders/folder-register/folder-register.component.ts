@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../services/user.service';
-import { FolderService } from '../../../services/folder.service';
 import { Folder } from '../../../models/folder';
+import { FolderService, UserService } from '../../../services/services.index';
 
 @Component({
 	selector: 'app-folder-register',

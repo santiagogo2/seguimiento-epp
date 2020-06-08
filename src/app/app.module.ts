@@ -5,41 +5,33 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AngularFileUploaderModule } from 'angular-file-uploader';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RecaptchaModule } from 'ng-recaptcha';
 import * as $ from 'jquery';
 
-import { AppComponent } from './app.component';
-import { LoginComponent } from './components/users/login/login.component';
-import { UserListComponent } from './components/users/user-list/user-list.component';
-import { UserEditComponent } from './components/users/user-edit/user-edit.component';
-import { PasswordEditComponent } from './components/users/password-edit/password-edit.component';
-import { UserRegisterComponent } from './components/users/user-register/user-register.component';
-import { DocumentListComponent } from './components/documents/document-list/document-list.component';
-import { DocumentRegisterComponent } from './components/documents/document-register/document-register.component';
-import { UserRequestComponent } from './components/users/user-request/user-request.component';
-import { FolderListComponent } from './components/folders/folder-list/folder-list.component';
-import { FolderRegisterComponent } from './components/folders/folder-register/folder-register.component';
-import { FolderEditComponent } from './components/folders/folder-edit/folder-edit.component';
+// Internal modules
+import { DocumentsModule } from './components/documents/documents.module';
+import { FoldersModule } from './components/folders/folders.module';
+import { UsersModule } from './components/users/users.module';
 
-import { UserService } from './services/user.service';
-import { IdentityGuard } from './services/identity.guard';
+// Components
+import { AppComponent } from './app.component';
+import { DocumentsComponent } from './components/documents/documents.component';
+import { FoldersComponent } from './components/folders/folders.component';
+import { LoginComponent } from './components/login/login.component';
+import { RequestComponent } from './components/request/request.component';
+import { UsersComponent } from './components/users/users.component';
+
+import { UserService } from './services/services.index';
+import { IdentityGuard } from './guards/guards.index';
 
 @NgModule({
 	declarations: [
 		AppComponent,
+		DocumentsComponent,
+		FoldersComponent,
 		LoginComponent,
-		UserListComponent,
-		UserEditComponent,
-		PasswordEditComponent,
-		UserRegisterComponent,
-		DocumentListComponent,
-		DocumentRegisterComponent,
-		UserRequestComponent,
-		FolderListComponent,
-		FolderRegisterComponent,
-		FolderEditComponent
+		RequestComponent,
+		UsersComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -47,12 +39,14 @@ import { IdentityGuard } from './services/identity.guard';
 		FormsModule,
 		HttpClientModule,
 		NgxPaginationModule,
-		AngularFileUploaderModule,
-		RecaptchaModule.forRoot()
+		RecaptchaModule.forRoot(),
+
+		DocumentsModule,
+		FoldersModule,
+		UsersModule,
 	],
 	providers: [
 		appRoutingProviders,
-		{provide: LocationStrategy, useClass: HashLocationStrategy},
 		IdentityGuard,
 		UserService
 	],

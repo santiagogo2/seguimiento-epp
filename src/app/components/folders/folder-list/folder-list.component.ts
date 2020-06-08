@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../services/user.service';
-import { FolderService } from '../../../services/folder.service';
+import { FolderService, UserService } from '../../../services/services.index';
 
 @Component({
 	selector: 'app-folder-list',
@@ -79,7 +78,6 @@ export class FolderListComponent implements OnInit {
 		if(folder.documents.length > 0) {
 			return false;
 		} else{
-			console.log(folder.id, folder.name);
 			for(let i=0; i < this.folders.length; i++){
 				if(folder.id == this.folders[i].folder_id) {
 					i = this.folders.length;

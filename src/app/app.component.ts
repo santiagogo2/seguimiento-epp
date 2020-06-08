@@ -1,6 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { UserService } from './services/user.service';
+import { UserService } from './services/services.index';
 
 @Component({
 	selector: 'app-root',
@@ -8,7 +8,7 @@ import { UserService } from './services/user.service';
 	styleUrls: ['./app.component.css'],
 	providers: [UserService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit, DoCheck {
 	public title: string;
 	public token: string;
 	public identity: any;
@@ -19,7 +19,10 @@ export class AppComponent {
 		private _route: ActivatedRoute
 	){
 		this.title = "Cuarto de Datos";
-		this.loadUser();
+	}
+
+	ngOnInit(){
+		this.loadUser();		
 	}
 
 	ngDoCheck(){

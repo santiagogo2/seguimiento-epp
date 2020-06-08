@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { User } from '../../../models/user';
-import { IncomeRecord } from '../../../models/incomeRecord';
-import { UserService } from '../../../services/user.service';
-import { IncomeRecordService } from '../../../services/incomeRecord.service';
+import { User } from '../../models/user';
+import { IncomeRecord } from '../../models/incomeRecord';
+import { IncomeRecordService, UserService } from '../../services/services.index';
 
 @Component({
 	selector: 'app-login',
@@ -73,8 +72,7 @@ export class LoginComponent implements OnInit {
 											localStorage.setItem('expiration', expirationTime.toString());
 
 											form.reset();
-											//this._router.navigate(['/documentos/listar-documentos']);
-											window.location.href="/cuartoDeDatos/#/documentos/listar-documentos";
+											this._router.navigate(['/documentos/listar-documentos']);
 										} else{
 											this.status = 'error';
 											this.errorCode = response.code;

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Email } from '../../../models/email';
-import { UserService } from '../../../services/user.service';
+import { Email } from '../../models/email';
+import { UserService } from '../../services/services.index';
 
 @Component({
-	selector: 'app-user-request',
-	templateUrl: './user-request.component.html',
-	styleUrls: ['./user-request.component.css'],
+	selector: 'app-request',
+	templateUrl: './request.component.html',
+	styleUrls: ['./request.component.css'],
 	providers: [UserService]
 })
-export class UserRequestComponent implements OnInit {
+export class RequestComponent implements OnInit {
 	public page_title: string;
 	public emailParams: Email;
 	public status: string;

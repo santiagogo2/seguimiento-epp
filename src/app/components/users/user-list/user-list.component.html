@@ -33,11 +33,11 @@
 				</thead>
 				<tbody class="tbody_styles">
 					<tr *ngFor="let user of users | paginate: {itemsPerPage: itemsPerPage, currentPage: actualPage}">
-						<td><a [routerLink]="['/editar/usuario', user.id]">{{ user.user_alias }}</a></td>
-						<td *ngIf="user.surname == ''"  colspan="2"><a [routerLink]="['/editar/usuario', user.id]">{{ user.name }}</a></td>
-						<td *ngIf="user.surname != ''"><a [routerLink]="['/editar/usuario', user.id]">{{ user.name }}</a></td>
-						<td *ngIf="user.surname != ''"><a [routerLink]="['/editar/usuario', user.id]">{{ user.surname }}</a></td>
-						<td><a [routerLink]="['/editar/usuario', user.id]">{{ user.role }}</a></td>
+						<td><a [routerLink]="['/usuarios/editar', user.id]">{{ user.user_alias }}</a></td>
+						<td *ngIf="user.surname == ''"  colspan="2"><a [routerLink]="['/usuarios/editar', user.id]">{{ user.name }}</a></td>
+						<td *ngIf="user.surname != ''"><a [routerLink]="['/usuarios/editar', user.id]">{{ user.name }}</a></td>
+						<td *ngIf="user.surname != ''"><a [routerLink]="['/usuarios/editar', user.id]">{{ user.surname }}</a></td>
+						<td><a [routerLink]="['/usuarios/editar', user.id]">{{ user.role }}</a></td>
 						<td style="padding: 0.55rem"><button *ngIf="user.id != 1" type="button" class="btn btn-danger" data-toggle="modal" [attr.data-target]="'#myModal'+user.id">Borrar</button></td>
 						<!-- The Modal -->
 						<div class="modal" id="{{ 'myModal'+user.id }}">

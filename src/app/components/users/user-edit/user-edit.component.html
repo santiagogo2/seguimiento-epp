@@ -3,7 +3,7 @@
 		<div class="col col-sm-12 col-md-8 col-lg-6 col-xl-5 marginForm mt-3">
 			<div class="linkContent">
 				<div class="backLink">
-					<a [routerLink]="['/listar/usuarios']">Regresar</a>
+					<a [routerLink]="['/usuarios/listar']">Regresar</a>
 				</div>
 			</div>
 			<div id="preloaderCruzando" *ngIf="!user && !errorCode">
@@ -13,7 +13,7 @@
 				{{ errorMessage }}
 			</div>
 			<div class="alert alert-success wd-100 mt-3" *ngIf="status == 'success' && successMessage">
-				{{ successMessage }} Ver <a [routerLink]="['/listar/usuarios']">todos los usuarios</a>
+				{{ successMessage }} Ver <a [routerLink]="['/usuarios/listar']">todos los usuarios</a>
 			</div>
 			<div class="formContainer" *ngIf="user">
 				<form class="ml-0 pd-0 mt-3" #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)">
@@ -59,7 +59,7 @@
 							El role no es valido
 						</small>
 					</div>
-					<div class="w-100 centerTitle linkPassword"><a [routerLink]="['/change/password', user.id]">Actualizar Contraseña</a></div>
+					<div class="w-100 centerTitle linkPassword"><a [routerLink]="['/usuarios/change/password', user.id]">Actualizar Contraseña</a></div>
 				
 					<div class="buttonSubmit mt-3 d-block">
 						<input type="submit" value="Actualizar" class="btn btn-success" [disabled]="userEditForm.invalid">

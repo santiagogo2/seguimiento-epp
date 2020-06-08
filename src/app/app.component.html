@@ -44,8 +44,8 @@
 						{{ identity.name + ' ' + identity.surname }}
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a *ngIf="identity.role=='ROLE_SUPER_ADMIN'" class="dropdown-item" [routerLink]="['/listar/usuarios']" [routerLinkActive]="['active']">Listar Usuarios</a>
-						<a *ngIf="identity.role=='ROLE_SUPER_ADMIN'" class="dropdown-item" [routerLink]="['/registrar/usuario']" [routerLinkActive]="['active']">Agregar Usuarios</a>
+						<a *ngIf="identity.role=='ROLE_SUPER_ADMIN'" class="dropdown-item" [routerLink]="['usuarios/listar']" [routerLinkActive]="['active']">Listar Usuarios</a>
+						<a *ngIf="identity.role=='ROLE_SUPER_ADMIN'" class="dropdown-item" [routerLink]="['usuarios/registrar']" [routerLinkActive]="['active']">Agregar Usuarios</a>
 						<div *ngIf="identity.role=='ROLE_SUPER_ADMIN'" class="dropdown-divider"></div>
 						<a class="dropdown-item" [routerLink]="['/logout/1']">Cerrar Sesión</a>
 					</div>

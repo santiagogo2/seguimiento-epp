@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../services/user.service';
-import { DocumentsService } from '../../../services/documents.service';
-import { FolderService } from '../../../services/folder.service';
+import { DocumentsService, FolderService, IncomeRecordService, UserService } from '../../../services/services.index';
 import { Document } from '../../../models/document';
 import { global } from '../../../services/global';
 

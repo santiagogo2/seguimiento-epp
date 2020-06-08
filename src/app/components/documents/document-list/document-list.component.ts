@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { UserService } from '../../../services/user.service';
-import { DocumentsService } from '../../../services/documents.service';
-import { IncomeRecordService } from '../../../services/incomeRecord.service';
-import { FolderService } from '../../../services/folder.service';
+import { DocumentsService, FolderService, IncomeRecordService, UserService } from '../../../services/services.index';
 import { IncomeRecord } from '../../../models/incomeRecord';
 import { global } from '../../../services/global';
 
