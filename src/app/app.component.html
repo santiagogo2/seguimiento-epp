@@ -47,7 +47,7 @@
 						<a *ngIf="identity.role=='ROLE_SUPER_ADMIN'" class="dropdown-item" [routerLink]="['usuarios/listar']" [routerLinkActive]="['active']">Listar Usuarios</a>
 						<a *ngIf="identity.role=='ROLE_SUPER_ADMIN'" class="dropdown-item" [routerLink]="['usuarios/registrar']" [routerLinkActive]="['active']">Agregar Usuarios</a>
 						<div *ngIf="identity.role=='ROLE_SUPER_ADMIN'" class="dropdown-divider"></div>
-						<a class="dropdown-item" [routerLink]="['/logout/1']">Cerrar Sesión</a>
+						<a class="dropdown-item" [routerLink]="['/logout', 1]">Cerrar Sesión</a>
 					</div>
 				</li>
 			</ul>

@@ -11,5 +11,6 @@ const documentsRoutes: Routes = [
 	{ path: 'inicio', component: DocumentListComponent },
 	{ path: 'documentos/listar-documentos', component: DocumentListComponent },
 	{ path: 'documentos/cargar-documentos', component: DocumentRegisterComponent },
+	{ path: '',  redirectTo: 'login', pathMatch: 'full'},
 ]
 export const DOCUMENTS_ROUTES = RouterModule.forChild( documentsRoutes );

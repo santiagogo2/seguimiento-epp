@@ -73,7 +73,7 @@ export class UserService{
 	}
 
 	getToken(){
-		let token = localStorage.getItem('token');
+		let token = localStorage.getItem('CDUtoken');
 
 		if(token && token != 'undefined'){
 			this.token = token;
@@ -84,7 +84,7 @@ export class UserService{
 	}
 
 	getIdentity(){
-		let identity = JSON.parse(localStorage.getItem('identity'));
+		let identity = JSON.parse(localStorage.getItem('CDUidentity'));
 
 		if(identity && identity != 'undefined'){
 			this.identity = identity;

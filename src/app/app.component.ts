@@ -5,7 +5,7 @@ import { UserService } from './services/services.index';
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.css'],
+	styles: [],
 	providers: [UserService]
 })
 export class AppComponent implements OnInit, DoCheck {
@@ -31,11 +31,11 @@ export class AppComponent implements OnInit, DoCheck {
 
 	loadUser(){
 		let actualDate = new Date().getTime();
-		let expiresDate = +localStorage.getItem('expiration');
+		let expiresDate = +localStorage.getItem('CDUexpiration');
 		if( expiresDate && actualDate >= expiresDate ){
-			localStorage.removeItem('token');
-			localStorage.removeItem('identity');
-			localStorage.removeItem('expiration');
+			localStorage.removeItem('CDUtoken');
+			localStorage.removeItem('CDUidentity');
+			localStorage.removeItem('CDUexpiration');
 
 			this.token = null;
 			this.identity = null;
